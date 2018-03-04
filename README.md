@@ -1,8 +1,6 @@
 Redmine-Issue-Execute-hook
 ====
 
-Overview
-
 Redmine Issue(チケット)を更新したときに、外部のシステムに対してコマンドを実行するための連携用プラグイン。
 Redmine Hook の以下のHookで、外部コマンドを実行する仕組み。
 
@@ -11,11 +9,24 @@ Redmine Hook の以下のHookで、外部コマンドを実行する仕組み。
 * Issue一括更新(controller_issues_bulk_edit_before_save)
 
 本プラグインは Redmine 2.4以降でHookの場所がControllerに変更になった後のシステムで実行するためのプラグインである。
+
 Redmine 2.4以前の環境では動作しない。
 
 https://github.com/incmplt/redmine-issue-exec.git
 
 ## Description
+
+ことの経緯は Redmine 2.4以降、Hookの場所がControllerに移動され、「日本語の」プラグインサイトでは、2.3までの情報しかなかったことから、このプラグインを開発することになった。
+
+本来なら Redmine Hook Pluginで、処理を直接書くのが正しいやりかたと思われるが、仕様の変更やRedmineのバージョンアップなどで動作不良を起こすリスクを最低限にしたかったため、本プラグインでIssueの変更だけを検出し、実際の処理は外部に委託する方式にしている。
+
+本プラグインを使用した「想定した理想的なストーリー」は、次のようなもの。
+
+* redmine_issue_exec でIssue(チケット)の変更を検出
+* 変更のあったIssueのURLを引数としてsystem関数で外部プログラムを呼び出し
+* 外部プログラムは Redmine APIを使用して Issueの情報を取得
+* 必要な処理を実施
+
 
 ## Requirement
 
@@ -59,6 +70,7 @@ Hookが動作してサンプルのスクリプトが実行されると /tmp/redm
 URlがわかるので、Redmine APIを経由してIssueのデータを取得して外部システムに渡す形式で処理を拡張する。
 
 ```bash:log
+# cat /tmp/redmine-hook.log
 controller_issues_edit_after_save http://localhost/redmine/issues/74
 controller_issues_edit_after_save http://localhost/redmine/issues/74
 controller_issues_edit_after_save http://localhost/redmine/issues/85
