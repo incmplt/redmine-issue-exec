@@ -5,8 +5,7 @@ module RedmineIssueExec
       issue=context[:issue]
       params = context[:params]
       url = issue_controller.issue_url( issue )
-      #system( 'echo def controller_issues_new_after_save > /tmp/redmine-hook.log')
-      exec = '/opt/redmine/bin/issue_new.py ' + url
+      exec = '/opt/redmine/bin/issue_new.sh ' + url
       system( exec )
     end
 
@@ -15,8 +14,7 @@ module RedmineIssueExec
       issue=context[:issue]
       params = context[:params]
       url = issue_controller.issue_url( issue )
-      #system( 'echo controller_issues_edit_before_save > /tmp/redmine-hook.log')
-      exec = '/opt/redmine/bin/issue_edit.py ' + url
+      exec = '/opt/redmine/bin/issue_edit.sh ' + url
       system( exec )
     end
 
@@ -24,8 +22,7 @@ module RedmineIssueExec
       issue_controller = context[:controller]
       issue = context[:issue]
       url = issue_controller.issue_url( issue )
-      #system( 'echo controller_issues_bulk_edit_before_save > /tmp/redmine-hook.log')
-      exec = '/opt/redmine/bin/issue_edit.py ' + url
+      exec = '/opt/redmine/bin/issue-bluk-edit.sh  ' + url
       system( exec )
     end
 
