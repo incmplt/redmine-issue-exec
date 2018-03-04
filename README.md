@@ -55,7 +55,16 @@ Hookのサンプルスクリプトは、以下の手順で配置する。
 # chmod 0755 /opt/redmine/bin/*.sh
 ```
 
-Hookが動作してサンプルのスクリプトが実行されると /tmp/redmine-hook.log に実行された内容が記録される。
+Hookが動作してサンプルのスクリプトが実行されると /tmp/redmine-hook.log に実行されたIssueのURLが記録される。
+URlがわかるので、Redmine APIを経由してIssueのデータを取得して外部システムに渡す形式で処理を拡張する。
+
+```bash:log
+controller_issues_edit_after_save http://localhost/redmine/issues/74
+controller_issues_edit_after_save http://localhost/redmine/issues/74
+controller_issues_edit_after_save http://localhost/redmine/issues/85
+controller_issues_new_after_save http://localhost/redmine/issues/92
+```
+
 
 
 ## Licence
