@@ -80,9 +80,10 @@ controller_issues_new_after_save http://localhost/redmine/issues/92
 
 ## Licence
 
+MIT License
+
 ## Author
 
 * [incmplt](https://github.com/incmplt)
-
-* [InfoCircus](https://www.infocircus.jp/)
+* [InfoCircus,Inc.](https://www.infocircus.jp/)
 
