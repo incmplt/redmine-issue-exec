@@ -16,7 +16,7 @@ https://github.com/incmplt/redmine-issue-exec.git
 
 ## Description
 
-ことの経緯は Redmine 2.4以降、Hookの場所がControllerに移動され、「日本語の」プラグインサイトでは、2.3までの情報しかなかったことから、このプラグインを開発することになった。
+ことの経緯は Redmine 2.4以降、Hookの場所がControllerに移動され、「日本語の」プラグイン解説サイトでは、2.3までの情報しかなかったことから、このプラグインを開発することになった。
 
 本来なら Redmine Hook Pluginで、処理を直接書くのが正しいやりかたと思われるが、仕様の変更やRedmineのバージョンアップなどで動作不良を起こすリスクを最低限にしたかったため、本プラグインでIssueの変更だけを検出し、実際の処理は外部に委託する方式にしている。
 
@@ -26,7 +26,6 @@ https://github.com/incmplt/redmine-issue-exec.git
 * 変更のあったIssueのURLを引数としてsystem関数で外部プログラムを呼び出し
 * 外部プログラムは Redmine APIを使用して Issueの情報を取得
 * 必要な処理を実施
-
 
 ## Requirement
 
@@ -41,7 +40,6 @@ https://github.com/incmplt/redmine-issue-exec.git
 * redmine_issue_exec をインストール
 * lib/redmine_issue_exec/hooks.rb の実行コマンドを変更
 * Redmineの再起動
-
 
 ## Install
 
